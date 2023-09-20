@@ -1,0 +1,2338 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/20/2023 6:20:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BHALO"
+  DTS:CreatorName="BHALO\admin"
+  DTS:DTSID="{D770CCF8-3612-4925-9325-BA87ABFAD9A5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{F893B09A-FE35-4E20-9BA4-E7A462F0B93F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{32D8123A-9874-4E49-B898-6ACD46DF27BF}"
+      DTS:ObjectName="LocalHost.Toronto Transit Commission Data_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Toronto Transit Commission Data_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{32D8123A-9874-4E49-B898-6ACD46DF27BF}LocalHost.Toronto Transit Commission Data_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Subway Delay Data Integration"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{650CD6FE-BB27-4733-923A-1C9C19064977}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Subway Delay Data Integration"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Subway Delay Data Integration\Subway Delay Data 2020"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Subway Delay Data 2020"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Subway Delay data 2020]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Station]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Station]"
+                      name="Station"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      name="Min Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      name="Min Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Bound]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Bound]"
+                      name="Bound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Line]"
+                      name="Line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      name="Station" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bound" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Line" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      name="Station" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      name="Bound" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      name="Line" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Subway Delay Data Integration\Subway Delay Data 2023"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Subway Delay Data 2023"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Subwat Delay Data 2023]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Station]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Station]"
+                      name="Station"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      name="Min Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      name="Min Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Bound]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Bound]"
+                      name="Bound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Line]"
+                      name="Line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      name="Station" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bound" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Line" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      name="Station" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      name="Bound" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      name="Line" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Subway Delay Data Integration\Subway Delay Data All"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Subway Delay Data All"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Subway Delay Data All]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data All.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Time"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Station]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Station"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Station]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Min Delay]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Min Gap]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Bound]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bound"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Bound]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Line"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Line]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]" />
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      name="Station" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bound" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Line" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subway Delay Data All.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data All.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subway Delay Data All.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data All.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Subwy Delay Data 2021"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Subway Delay Data 2021]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Station]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Station]"
+                      name="Station"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      name="Min Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      name="Min Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Bound]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Bound]"
+                      name="Bound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Line]"
+                      name="Line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      name="Station" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bound" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Line" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Station]"
+                      name="Station" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      name="Bound" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      name="Line" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Subwy Delay Data 2022"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Subway Delay Data 2022]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Line]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Line]"
+                      name="Line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Incident]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Incident]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Incident]"
+                      name="Incident"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Delay]"
+                      name="Min Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Gap]"
+                      name="Min Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Bound]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Bound]"
+                      name="Bound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Line]"
+                      dataType="r8"
+                      name="Line" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bound" />
+                    <externalMetadataColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Line]"
+                      name="Line" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Incident]"
+                      name="Incident" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Bound]"
+                      name="Bound" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Subway Delay Data Integration\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Time"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Station]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Station"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Station]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Code"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Min Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Bound]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bound"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Bound]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Line"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Line]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Time"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Station]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Station"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Station]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Code"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Min Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Bound]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bound"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Bound]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Line"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Line]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Time"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Min Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Bound]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bound"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Bound]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4]"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Time"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Station]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Station"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Station]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Code"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Min Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Bound]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bound"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Bound]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Line"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Line]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 5]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 5">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Station]"
+                      name="Station" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Bound]"
+                      name="Bound" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Line]"
+                      name="Line" />
+                    <outputColumn
+                      refId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1].Columns[Vehicle]"
+                      name="Vehicle" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Subway Delay Data Integration.Paths[OLE DB Source Output]"
+              endId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Subway Delay Data Integration\Subway Delay Data 2020.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Subway Delay Data Integration.Paths[OLE DB Source Output1]"
+              endId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\Subway Delay Data Integration\Subwy Delay Data 2021.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Subway Delay Data Integration.Paths[OLE DB Source Output2]"
+              endId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\Subway Delay Data Integration\Subwy Delay Data 2022.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Subway Delay Data Integration.Paths[OLE DB Source Output3]"
+              endId="Package\Subway Delay Data Integration\Union All.Inputs[Union All Input 4]"
+              name="OLE DB Source Output"
+              startId="Package\Subway Delay Data Integration\Subway Delay Data 2023.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Subway Delay Data Integration.Paths[Union All Output 1]"
+              endId="Package\Subway Delay Data Integration\Subway Delay Data All.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Subway Delay Data Integration\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="226.666666666667,42.6666666666667"
+          Id="Package\Subway Delay Data Integration"
+          TopLeft="23.124998966232,7.79999962806702" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Subway Delay Data Integration">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Subway Delay Data 2020"
+          TopLeft="5.50000000000003,13.9499995970726" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Subwy Delay Data 2021"
+          TopLeft="9.99999955296524,59.1499971795083" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Subwy Delay Data 2022"
+          TopLeft="10.4999997764827,103.316666635672" />
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Subway Delay Data 2023"
+          TopLeft="4.95833341715233,150.733335936864" />
+        <NodeLayout
+          Size="121.333333333334,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Union All"
+          TopLeft="378.749983068556,85.4333297999701" />
+        <EdgeLayout
+          Id="Package\Subway Delay Data Integration.Paths[OLE DB Source Output]"
+          TopLeft="104.166666666667,56.6166662637393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="335.249983068556,28.8166635362308"
+              Start="0,0"
+              End="335.249983068556,21.3166635362308">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.4083317681154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.4083317681154"
+                    Point2="0,14.4083317681154"
+                    Point3="4,14.4083317681154" />
+                  <mssgle:LineSegment
+                    End="331.249983068556,14.4083317681154" />
+                  <mssgle:CubicBezierSegment
+                    Point1="331.249983068556,14.4083317681154"
+                    Point2="335.249983068556,14.4083317681154"
+                    Point3="335.249983068556,18.4083317681154" />
+                  <mssgle:LineSegment
+                    End="335.249983068556,21.3166635362308" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Subway Delay Data Integration.Paths[OLE DB Source Output1]"
+          TopLeft="201.999999552965,80.4833305128416">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.749983515591,20.505554842684"
+              Start="0,0"
+              End="169.249983515591,20.505554842684">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="98.2168579367273,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.2168579367273,0"
+                    Point2="102.216857936727,0"
+                    Point3="102.216857936727,4" />
+                  <mssgle:LineSegment
+                    End="102.216857936727,16.505554842684" />
+                  <mssgle:CubicBezierSegment
+                    Point1="102.216857936727,16.505554842684"
+                    Point2="102.216857936727,20.505554842684"
+                    Point3="106.216857936727,20.505554842684" />
+                  <mssgle:LineSegment
+                    End="169.249983515591,20.505554842684" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Subway Delay Data Integration.Paths[OLE DB Source Output2]"
+          TopLeft="202.499999776483,124.649999969006">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.249983292074,-12.1055590579244"
+              Start="0,0"
+              End="168.749983292074,-12.1055590579244">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.9277011809582,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97.9277011809582,0"
+                    Point2="101.927701180958,0"
+                    Point3="101.927701180958,-4" />
+                  <mssgle:LineSegment
+                    End="101.927701180958,-8.10555905792438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.927701180958,-8.10555905792438"
+                    Point2="101.927701180958,-12.1055590579244"
+                    Point3="105.927701180958,-12.1055590579244" />
+                  <mssgle:LineSegment
+                    End="168.749983292074,-12.1055590579244" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Subway Delay Data Integration.Paths[OLE DB Source Output3]"
+          TopLeft="103.625000083819,150.733335936864">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="335.791649651404,-22.6333394702274"
+              Start="0,0"
+              End="335.791649651404,-15.1333394702274">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-7.31666973511368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-7.31666973511368"
+                    Point2="0,-11.3166697351137"
+                    Point3="4,-11.3166697351137" />
+                  <mssgle:LineSegment
+                    End="331.791649651404,-11.3166697351137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="331.791649651404,-11.3166697351137"
+                    Point2="335.791649651404,-11.3166697351137"
+                    Point3="335.791649651404,-15.3166697351137" />
+                  <mssgle:LineSegment
+                    End="335.791649651404,-15.1333394702274" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Subway Delay Data Integration\Subway Delay Data All"
+          TopLeft="504.374977452681,180.899992995262" />
+        <EdgeLayout
+          Id="Package\Subway Delay Data Integration.Paths[Union All Output 1]"
+          TopLeft="458.305538624112,128.099996466637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.736105495236,52.7999965286256"
+              Start="0,0"
+              End="138.736105495236,45.2999965286256">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5323196255566" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5323196255566"
+                    Point2="0,21.5323196255566"
+                    Point3="4,21.5323196255566" />
+                  <mssgle:LineSegment
+                    End="134.736105495236,21.5323196255566" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134.736105495236,21.5323196255566"
+                    Point2="138.736105495236,21.5323196255566"
+                    Point3="138.736105495236,25.5323196255566" />
+                  <mssgle:LineSegment
+                    End="138.736105495236,45.2999965286256" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Subway Delay Data Integration\Subway Delay Data 2020">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Subway Delay Data Integration\Subwy Delay Data 2021">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Subway Delay Data Integration\Subwy Delay Data 2022">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Subway Delay Data Integration\Subway Delay Data 2023">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Subway Delay Data Integration\Subway Delay Data All">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
