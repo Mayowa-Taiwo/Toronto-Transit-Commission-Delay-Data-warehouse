@@ -1,0 +1,1399 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/19/2023 6:27:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BHALO"
+  DTS:CreatorName="BHALO\admin"
+  DTS:DTSID="{94CF26B6-0BAD-42B6-A38A-D158674AB71D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{600DE192-4752-4FEB-A7F1-0EB452708CD1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{30409A0E-90B4-4704-BCD0-B53C668BF489}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\admin\Desktop\LaDV_Consulting\Case Studies\Data\Transportation\ttc-bus-delay-data-2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{6DC47899-6D8F-446C-8E76-2551F6EB1383}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\admin\Desktop\LaDV_Consulting\Case Studies\Data\Transportation\ttc-bus-delay-data-2021.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data Warehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1FEF4628-36E1-40BC-B0A9-0E30C9CAE8ED}"
+      DTS:ObjectName="LocalHost.Toronto Transit Commission Data Warehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Toronto Transit Commission Data Warehouse;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{1FEF4628-36E1-40BC-B0A9-0E30C9CAE8ED}LocalHost.Toronto Transit Commission Data Warehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DF53F9FB-D7DE-4A24-9F30-AF71E50338C6}"
+      DTS:ObjectName="LocalHost.Toronto Transit Commission Data_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Toronto Transit Commission Data_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{DF53F9FB-D7DE-4A24-9F30-AF71E50338C6}LocalHost.Toronto Transit Commission Data_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{780BFDD7-6AF0-4E3F-9C98-37EA84057053}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Bus Delay Data Jan 2020"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Bus Delay Data Jan 2020"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Jan 2020$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Report Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Report Date]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Route]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Route]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Route]"
+                      name="Route"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Incident]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Incident]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Incident]"
+                      name="Incident"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Delay]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Delay]"
+                      name="Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Gap]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Gap]"
+                      name="Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Direction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Direction]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Direction]"
+                      name="Direction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Report Date]"
+                      dataType="date"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Route]"
+                      dataType="r8"
+                      name="Route" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      dataType="date"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Delay]"
+                      dataType="r8"
+                      name="Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Gap]"
+                      dataType="r8"
+                      name="Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      name="Direction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Report Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Route]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Route]"
+                      name="Route" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Time]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Incident]"
+                      name="Incident" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Delay]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Delay]"
+                      name="Delay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Gap]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Gap]"
+                      name="Gap" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Direction]"
+                      name="Direction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Bus Delay Data Jan 2021"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Bus Delay Data Jan 2021"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Jan 21$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Route]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Route]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Route]"
+                      name="Route"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Day]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Day]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Incident]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Incident]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Incident]"
+                      name="Incident"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Delay]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Min Delay]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Delay]"
+                      name="Min Delay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Gap]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Min Gap]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Gap]"
+                      name="Min Gap"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Direction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Direction]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Direction]"
+                      name="Direction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Vehicle]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Vehicle]"
+                      name="Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Route]"
+                      dataType="r8"
+                      name="Route" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Min Delay]"
+                      dataType="r8"
+                      name="Min Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Min Gap]"
+                      dataType="r8"
+                      name="Min Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      name="Direction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Route]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Route]"
+                      name="Route" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Incident]"
+                      name="Incident" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Min Delay]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Min Delay]"
+                      name="Min Delay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Min Gap]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Min Gap]"
+                      name="Min Gap" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Direction]"
+                      name="Direction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[Vehicle]"
+                      name="Vehicle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Testing ETL"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Testing ETL"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Testing ETL]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Testing ETL.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Toronto Transit Commission Data_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Report Date]"
+                      cachedDataType="date"
+                      cachedName="Report Date"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Report Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Route]"
+                      cachedDataType="r8"
+                      cachedName="Route"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Route]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Route]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Time]"
+                      cachedDataType="date"
+                      cachedName="Time"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Incident]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Incident]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Incident]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Delay]"
+                      cachedDataType="r8"
+                      cachedName="Delay"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Delay]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Delay]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Gap]"
+                      cachedDataType="r8"
+                      cachedName="Gap"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Gap]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Gap]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Direction]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Direction"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Direction]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Direction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      externalMetadataColumnId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Vehicle]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Route]"
+                      dataType="r8"
+                      name="Route" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      dataType="dbTimeStamp"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Delay]"
+                      dataType="r8"
+                      name="Delay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Gap]"
+                      dataType="r8"
+                      name="Gap" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      name="Direction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle]"
+                      dataType="r8"
+                      name="Vehicle" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Testing ETL.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Testing ETL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Testing ETL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Testing ETL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Report Date]"
+                      cachedDataType="date"
+                      cachedName="Report Date"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Report Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Report Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Route]"
+                      cachedDataType="r8"
+                      cachedName="Route"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Route]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Route]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Time]"
+                      cachedDataType="date"
+                      cachedName="Time"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Incident]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Incident]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Incident]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Delay]"
+                      cachedDataType="r8"
+                      cachedName="Delay"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Gap]"
+                      cachedDataType="r8"
+                      cachedName="Gap"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Direction]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Direction"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Direction]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Direction]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Route]"
+                      cachedDataType="r8"
+                      cachedName="Route"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Route]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Route]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Day]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Day"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Day]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Day]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Incident]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Incident]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Incident]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Direction]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Direction"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Direction]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Direction]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Vehicle]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Vehicle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Vehicle]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Min Delay]"
+                      cachedDataType="r8"
+                      cachedName="Min Delay"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Delay]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Delay]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Min Gap]"
+                      cachedDataType="r8"
+                      cachedName="Min Gap"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Min Gap]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Gap]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      lineageId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Report Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Report Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Route]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Route]"
+                      name="Route" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Day]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Incident]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Incident]"
+                      name="Incident" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Delay]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Delay]"
+                      name="Delay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Gap]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Gap]"
+                      name="Gap" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Direction]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Direction]"
+                      name="Direction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Vehicle]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Vehicle]"
+                      name="Vehicle" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Bus Delay Data Jan 2020.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output1]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Bus Delay Data Jan 2021.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Union All Output 1]"
+              endId="Package\Data Flow Task\Testing ETL.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Data Flow Task"
+          TopLeft="90.6249959487469,48.0999977064134" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="121.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="130.624994160608,181.349991352558" />
+        <NodeLayout
+          Size="135.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Testing ETL"
+          TopLeft="359.999983906746,194.999990701676" />
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Bus Delay Data Jan 2021"
+          TopLeft="221.666656757395,8.80000148773189" />
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task\Bus Delay Data Jan 2020"
+          TopLeft="6.12499997206032,8.74999984502793" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="251.958327493941,202.683324685891">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.041656412805,13.649999349118"
+              Start="0,0"
+              End="100.541656412805,13.649999349118">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.0208282064023,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.0208282064023,0"
+                    Point2="54.0208282064023,0"
+                    Point3="54.0208282064023,4" />
+                  <mssgle:LineSegment
+                    End="54.0208282064023,9.64999934911802" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.0208282064023,9.64999934911802"
+                    Point2="54.0208282064023,13.649999349118"
+                    Point3="58.0208282064023,13.649999349118" />
+                  <mssgle:LineSegment
+                    End="100.541656412805,13.649999349118" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output1]"
+          TopLeft="320.333323424061,51.4666681543985">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-110.152773707898,129.88332319816"
+              Start="0,0"
+              End="-110.152773707898,122.38332319816">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.9157206791706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,72.9157206791706"
+                    Point2="0,76.9157206791706"
+                    Point3="-4,76.9157206791706" />
+                  <mssgle:LineSegment
+                    End="-106.152773707898,76.9157206791706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-106.152773707898,76.9157206791706"
+                    Point2="-110.152773707898,76.9157206791706"
+                    Point3="-110.152773707898,80.9157206791706" />
+                  <mssgle:LineSegment
+                    End="-110.152773707898,122.38332319816" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="104.791666638727,51.4166665116946">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.6111052996585,129.933324840864"
+              Start="0,0"
+              End="67.6111052996585,122.433324840864">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.9453311964334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,72.9453311964334"
+                    Point2="0,76.9453311964334"
+                    Point3="4,76.9453311964334" />
+                  <mssgle:LineSegment
+                    End="63.6111052996585,76.9453311964334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.6111052996585,76.9453311964334"
+                    Point2="67.6111052996585,76.9453311964334"
+                    Point3="67.6111052996585,80.9453311964334" />
+                  <mssgle:LineSegment
+                    End="67.6111052996585,122.433324840864" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Testing ETL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Bus Delay Data Jan 2021">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Bus Delay Data Jan 2020">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
